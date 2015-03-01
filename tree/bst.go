@@ -2,9 +2,9 @@ package tree
 
 // BST a binary search tree which uses strings as keys
 type BST struct {
-	left, right *BST
-	node        interface{}
-	Compare     CompareFunc
+	parent, left, right *BST
+	node                interface{}
+	Compare             CompareFunc
 }
 
 func NewBST(val interface{}, comp CompareFunc) *BST {
@@ -47,6 +47,11 @@ func (b *BST) Exists(key interface{}) bool {
 	return b.Search(key) != nil
 }
 
+// Empty check if the tree is empty below this point
+func (b *BST) Empty() bool {
+	return b.node == nil
+}
+
 // Insert add a key,val pair into the BST
 func (b *BST) Insert(val interface{}) {
 	if b.node == nil {
@@ -62,6 +67,7 @@ func (b *BST) Insert(val interface{}) {
 	case 1:
 		if b.left == nil {
 			b.left = NewBST(val, b.Compare)
+			b.left.parent = b
 		} else {
 			b.left.Insert(val)
 		}
@@ -69,6 +75,7 @@ func (b *BST) Insert(val interface{}) {
 	case -1:
 		if b.right == nil {
 			b.right = NewBST(val, b.Compare)
+			b.right.parent = b
 		} else {
 			b.right.Insert(val)
 		}
