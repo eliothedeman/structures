@@ -22,10 +22,11 @@ func TestGet(t *testing.T) {
 		m.Put(k, k)
 	}
 
-	exp := "20"
-	got := m.Get(exp)
-	if exp != got {
-		t.Errorf("expectd: %s got: %v", exp, got)
+	for i := 0; i < 100; i++ {
+		k := fmt.Sprintf("%d", i)
+		if k != m.Get(k) {
+			t.Fail()
+		}
 	}
 }
 
