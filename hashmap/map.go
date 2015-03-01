@@ -7,6 +7,8 @@ import (
 	"github.com/eliothedeman/structures/list"
 )
 
+// TODO:(ehedeman) too slow
+
 // Map an implimentation of a hashmap
 type Map struct {
 	index    []*list.LinkedList
