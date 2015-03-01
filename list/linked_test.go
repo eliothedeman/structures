@@ -53,5 +53,19 @@ func TestDelete(t *testing.T) {
 	if org == l.Index(21) {
 		t.Fail()
 	}
+}
 
+func TestWalk(t *testing.T) {
+	l := &LinkedList{}
+
+	for i := 0; i < 10; i++ {
+		l.Push(i)
+	}
+
+	l.Reset()
+	for i := 0; i < 10; i++ {
+		if l.Next() != 9-i {
+			t.Fail()
+		}
+	}
 }

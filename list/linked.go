@@ -4,6 +4,7 @@ package list
 type LinkedList struct {
 	first  *node
 	last   *node
+	curser *node
 	length int
 }
 
@@ -17,6 +18,22 @@ func (l *LinkedList) Push(i interface{}) {
 	}
 	l.first = n
 	l.length++
+}
+
+func (l *LinkedList) Next() interface{} {
+	if l.curser == nil {
+		return nil
+	}
+	i := l.curser
+	l.curser = i.next
+	if i == nil {
+		return nil
+	}
+	return i.elem
+}
+
+func (l *LinkedList) Reset() {
+	l.curser = l.first
 }
 
 // Insert add an element to the list at a given index
