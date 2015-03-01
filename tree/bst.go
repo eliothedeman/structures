@@ -1,4 +1,4 @@
-package bst
+package tree
 
 // BST a binary search tree which uses strings as keys
 type BST struct {

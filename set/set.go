@@ -1,10 +1,12 @@
 package set
 
-import "github.com/eliothedeman/structures/bst"
+import (
+	"github.com/eliothedeman/structures/tree"
+)
 
 // An implementation of set for strings
 type Set struct {
-	tree *bst.BST
+	tree *tree.BST
 }
 
 // Add add a string to the set
@@ -19,7 +21,7 @@ func (s *Set) Test(key string) bool {
 
 func New() *Set {
 	return &Set{
-		tree: bst.NewBST("", compareString),
+		tree: tree.NewBST("", compareString),
 	}
 }
 
