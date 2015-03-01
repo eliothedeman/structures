@@ -21,7 +21,7 @@ func (s *Set) Test(key string) bool {
 
 func New() *Set {
 	return &Set{
-		tree: tree.NewBST("", compareString),
+		tree: tree.NewBST(nil, compareString),
 	}
 }
 

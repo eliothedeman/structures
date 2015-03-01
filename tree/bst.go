@@ -49,6 +49,11 @@ func (b *BST) Exists(key interface{}) bool {
 
 // Insert add a key,val pair into the BST
 func (b *BST) Insert(val interface{}) {
+	if b.node == nil {
+		b.node = val
+		return
+	}
+
 	dir := b.Compare(b.node, val)
 
 	switch dir {
